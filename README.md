@@ -1,4 +1,4 @@
-# adct
+# <img align="center" src="tux.png" height="72">&nbsp;&nbsp;adct
 [![Releases](https://img.shields.io/github/release/ArtiomL/adct.svg)](https://github.com/ArtiomL/adct/releases)
 [![Maintenance](https://img.shields.io/maintenance/yes/2016.svg)](https://github.com/ArtiomL/adct/graphs/code-frequency)
 [![Commits](https://img.shields.io/github/commits-since/ArtiomL/adct/v1.0.svg)](https://github.com/ArtiomL/adct/graphs/commit-activity)
