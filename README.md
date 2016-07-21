@@ -5,4 +5,4 @@
 [![Issues](https://img.shields.io/github/issues/ArtiomL/adct.svg)](https://github.com/ArtiomL/adct/issues)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-ADC Test Site
+A small web app for testing Application Delivery Controllers in lab environments.
