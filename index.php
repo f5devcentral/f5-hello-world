@@ -1,6 +1,5 @@
 <!--
 ADC Test Site
-(CC0) No Rights Reserved
 Artiom Lichtenstein
 v2.1, 27/02/2016
 -->
