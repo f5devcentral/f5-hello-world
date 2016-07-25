@@ -1,7 +1,9 @@
-<!--	adct - index.php
+<!--
+	adct - index.php
 	https://github.com/ArtiomL/adct
 	Artiom Lichtenstein
-	v2.2, 24/07/2016	-->
+	v2.2, 24/07/2016
+-->
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
