@@ -1,5 +1,5 @@
 #!/bin/bash
-# adct - hget.sh: HTTP/S Client Simulator
+# adct - hget: HTTP/S Client Simulator
 # https://github.com/ArtiomL/adct
 # Artiom Lichtenstein
 # v1.4, 26/07/2016
