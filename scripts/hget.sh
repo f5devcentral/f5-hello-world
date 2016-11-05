@@ -29,7 +29,7 @@ while true; do
 	clear
 	echo
 	echo $(tput sgr0)$(tput bold)Transaction Number: $(tput setaf 2)$(tput bold)$int_TRANS_NUM $(tput sgr0)$(tput bold)to: $(tput setaf 6)$str_URL$(tput sgr0)
-	curl -A hget_v1.3 -G $str_URL -k -v -s -b scr_cURL_HGET.cookies -c scr_cURL_HGET.cookies -o /dev/null
+	curl -A hget_v1.4 -G $str_URL -k -v -s -b scr_cURL_HGET.cookies -c scr_cURL_HGET.cookies -o /dev/null
 	int_TRANS_NUM=$((int_TRANS_NUM+1))
 	sleep $2
 done
