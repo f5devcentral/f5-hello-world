@@ -62,6 +62,6 @@ foreach($_SERVER as $header => $value)
 </ol></div>
 </span><br><br>
 
-<span style="float:right; margin-right:100px;">Artiom Lichtenstein<br>Systems Engineer<br>F5 Networks<br><a href="https://artioml.net/" target="_blank">https://artioml.net/</a></span>
+<span style="float:right; margin-right:100px;">Artiom Lichtenstein<br>Systems Engineer<br>F5 Networks<br><a href="https://artioml.net" target="_blank">https://artioml.net/</a></span>
 </body>
 </html>
