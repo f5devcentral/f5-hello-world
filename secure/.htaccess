@@ -1,4 +1,6 @@
+# Make sure AllowOverride All is set for /var/www/ in /etc/apache2/apache2.conf
 AuthType Basic
 AuthName "Restricted Access"
-AuthUserFile /home/secure/auth
+AuthUserFile /home/user/.htpasswd
+# Generate using: htpasswd -c /home/user/.htpasswd user
 Require user user
