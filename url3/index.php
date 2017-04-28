@@ -2,7 +2,7 @@
 	adct - index.php
 	https://github.com/ArtiomL/adct
 	Artiom Lichtenstein
-	v2.2, 24/07/2016
+	v2.3, 02/02/2017
 -->
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -62,6 +62,6 @@ foreach($_SERVER as $header => $value)
 </ol></div>
 </span><br><br>
 
-<span style="float:right; margin-right:100px;">Artiom Lichtenstein<br>Application Delivery Architect<br>CCIE #37173</span>
+<span style="float:right; margin-right:100px;">Artiom Lichtenstein<br>Systems Engineer<br>F5 Networks<br><a href="https://artioml.net/" target="_blank">https://artioml.net</a></span>
 </body>
 </html>
