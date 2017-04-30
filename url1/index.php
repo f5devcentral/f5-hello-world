@@ -2,7 +2,7 @@
 	adct - index.php
 	https://github.com/ArtiomL/adct
 	Artiom Lichtenstein
-	v2.3, 02/02/2017
+	v2.4, 30/04/2017
 -->
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -29,7 +29,7 @@
 
 <body style="font-family:Calibri; font-size:13px; color:#000000; margin-left:25px;"><br>
 <p style="font: 12pt/17pt Calibri;">
-Hello <?php if ($_SERVER["HTTP_X_USERNAME"]!="") { echo $_SERVER["HTTP_X_USERNAME"]; } else { echo "World"; } ?>!<br>
+Hello <?php if (isset($_SERVER["PHP_AUTH_USER"])) { echo $_SERVER["PHP_AUTH_USER"]; } else { echo "World"; } ?>!<br>
 ip.src: <?php echo $_SERVER["REMOTE_ADDR"]; ?><br>
 tcp.srcport: <?php echo $_SERVER["REMOTE_PORT"]; ?><br>
 ip.dst: <?php echo $_SERVER["SERVER_ADDR"]; ?><br>
