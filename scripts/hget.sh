@@ -12,7 +12,7 @@ if [ -z "$1" ]; then
 fi
 
 int_TRANS_NUM=1
-str_BASE_URI="/url"
+str_BASE_URI="/uri"
 str_FILE="index.php"
 str_URL="$1"
 str_SLASHES="${1//[^\/]}"
