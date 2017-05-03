@@ -26,7 +26,7 @@
 			}
 		}
 	</script>
-	<link href="https://fonts.googleapis.com/css?family=Raleway:400" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
