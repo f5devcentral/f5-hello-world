@@ -25,9 +25,12 @@ while True:
 	objConn, tupCAddr = objSocket.accept()
 	funLog('Connection from: %s:%d' % (tupCAddr[0], tupCAddr[1]))
 	while True:
-		strData = objConn.recv(intBufSize)
-		if not strData: break
-		funLog('Data: ' + strData.rstrip())
-		objConn.send('ACK: ' + strData)
+		try:
+			strData = objConn.recv(intBufSize)
+			if not strData: break
+			funLog('Data: ' + strData.rstrip())
+			objConn.send('ACK: ' + strData)
+		except Exception as e:
+			funLog(repr(e))
 	objConn.close()
 	funLog('Connection closed')
