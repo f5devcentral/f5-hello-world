@@ -2,7 +2,7 @@
 # psock - Simple Socket Ping
 # https://github.com/ArtiomL/adct
 # Artiom Lichtenstein
-# v1.0.0, 20/05/2017
+# v1.0.1, 21/05/2017
 
 import socket
 import sys
@@ -14,6 +14,7 @@ def funLog(strMessage):
 	print('%s %s' % (time.strftime('%b %d %X'), strMessage))
 
 objSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+objSocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
 objSocket.bind(('', int(sys.argv[1])))
 objSocket.listen(5)
