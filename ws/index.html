@@ -58,6 +58,8 @@
 
 				objSocket.addEventListener('close', function(objEvent) {
 					objOpen.disabled = false;
+					objClose.disabled = true;
+					objSend.disabled = true;
 					objState.style.color='red';
 					objState.textContent = 'Not Connected';
 					if (objEvent.code != 1000) {
