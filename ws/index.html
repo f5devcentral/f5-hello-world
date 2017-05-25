@@ -1,0 +1,111 @@
+<!--
+	adct - WebSocket Echo Client
+	https://github.com/ArtiomL/adct
+	Artiom Lichtenstein
+	v1.0.1, 25/05/2017
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>WebSocket Echo</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet" type="text/css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" rel="stylesheet" type="text/css">
+	<style>
+		input[type="button"]:disabled {
+			background: #ccc;
+			border-color: #ccc;
+			text-shadow: none;
+			pointer-events: none;
+		}
+	</style>
+	<script>
+		'use strict';
+
+		function funInit() {
+			var objState = document.getElementById('idState');
+			var objURL = document.getElementById('idURL');
+			var objOpen = document.getElementById('idOpen');
+			var objClose = document.getElementById('idClose');
+			var objSend = document.getElementById('idSend');
+			var objText = document.getElementById('idText');
+			var objMessage = document.getElementById('idMessage');
+			var objSocket;
+
+			objState.style.color='red';
+			objState.textContent = 'Not Connected';
+			objURL.value = 'wss://asm.f5labs.one:4433';
+			objClose.disabled = true;
+			objSend.disabled = true;
+
+			objOpen.addEventListener('click', function(objEvent) {
+				objOpen.disabled = true;
+				objSocket = new WebSocket(objURL.value, 'echo');
+
+				objSocket.addEventListener('open', function(objEvent) {
+					objClose.disabled = false;
+					objSend.disabled = false;
+					objState.textContent = 'Connected';
+					objState.style.color='green';
+				});
+
+				objSocket.addEventListener('message', function(objEvent) {
+					objMessage.textContent = objEvent.data;
+				});
+
+				objSocket.addEventListener('close', function(objEvent) {
+					objOpen.disabled = false;
+					objState.style.color='red';
+					objState.textContent = 'Not Connected';
+					if (objEvent.code != 1000) {
+						objMessage.innerHTML = '<a href="https://tools.ietf.org/html/rfc6455#section-7.4.1" target="_blank">Error: ' + objEvent.code.toString() + '</a>';
+					}
+				});
+			});
+
+			objClose.addEventListener('click', function(objEvent) {
+				objClose.disabled = true;
+				objSend.disabled = true;
+				objMessage.textContent = '';
+				objSocket.close();
+			});
+
+			objSend.addEventListener('click', function(objEvent) {
+				objMessage.textContent = '';
+				objSocket.send(objText.value);
+			});
+		};
+	</script>
+</head>
+<body onLoad="funInit()">
+	<div class="container" style="margin-top: 5%">
+		<p>Status: <span id="idState"></span></p>
+		<form>
+			<div class="row">
+				<div class="six columns">
+					<label for="idURL">WS URL</label>
+					<input class="u-full-width" id="idURL">
+				</div>
+			</div>
+			<div class="row" style="margin-top: 1%">
+					<input class="button-primary" id="idOpen" type="button" value="Connect">
+					<input class="button-primary" id="idClose" type="button" value="Disconnect">
+			</div>
+			<div class="row" style="margin-top: 3%">
+				<label for="idText">Payload Data</label>
+				<textarea class="u-full-width" id="idText"></textarea>
+			</div>
+			<div class="row" style="margin-top: 1%">
+				<input class="button-primary" id="idSend" type="button" value="Send">
+			</div>
+			<div class="row" style="margin-top: 3%">
+				<label for="idMessage">Reply</label>
+				<span id="idMessage"></span>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
