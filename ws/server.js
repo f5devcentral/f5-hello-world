@@ -62,7 +62,7 @@ objWebSockSrv.on('request', function(objRequest) {
 		}
 	});
 
-	objConn.on('close', function(objConn) {
+	objConn.on('close', function() {
 		funLog(1, (new Date()) + ' Client ' + objConn.remoteAddress + " disconnected.");
 		// Remove from the list of connected clients
 		arrClients.splice(intCIndex, 1);
