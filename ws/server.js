@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /*
 	adct - WebSocket Echo Server
 	https://github.com/ArtiomL/adct
