@@ -3,14 +3,14 @@
 	adct - WebSocket Echo Server
 	https://github.com/ArtiomL/adct
 	Artiom Lichtenstein
-	v1.0.1, 28/05/2017
+	v1.0.3, 29/05/2017
 */
 
 'use strict';
 
 // Log level
 var intLogLevel = 2;
-var strLogID = '[-v1.0.1-170528-]';
+var strLogID = '[-v1.0.3-170529-]';
 
 function funLog(intMesLevel, strMessage, strMethod, objError) {
 	if (intLogLevel >= intMesLevel) {
@@ -36,12 +36,13 @@ var objHSrv = objHTTP.createServer(function() {
 });
 
 objHSrv.listen(intWSPort, function() {
-	funLog(1, (new Date()) + ' Server is listening on port ' + intWSPort);
+	funLog(1, (new Date()) + ' Server is listening on port: ' + intWSPort);
 });
 
 // WebSocket server (tied to the HTTP server)
 var objWebSockSrv = new funWebSockSrv({
-	httpServer: objHSrv
+	httpServer: objHSrv,
+	maxReceivedFrameSize: 0x1000000
 });
 
 // WebSocket connection callback
@@ -54,10 +55,17 @@ objWebSockSrv.on('request', function(objRequest) {
 
 	objConn.on('message', function(objMessage) {
 		if (objMessage.type === 'utf8') {
-			funLog(2, (new Date()) + ' Received message from ' + objConn.remoteAddress + ':\n' + objMessage.utf8Data);
-			// Broadcast the message to all connected clients
+			funLog(2, (new Date()) + ' Received text message from ' + objConn.remoteAddress + ':' + objConn.socket._peername.port + '\n' + objMessage.utf8Data);
+			// Broadcast text message to all connected clients
 			for (var i = 0; i < arrClients.length; i++) {
 				arrClients[i].sendUTF(objMessage.utf8Data);
+			}
+		}
+		else if (objMessage.type === 'binary') {
+			funLog(2, (new Date()) + ' Received binary message from ' + objConn.remoteAddress + ':' + objConn.socket._peername.port + ', length: ' + objMessage.binaryData.length);
+			// Broadcast binary message to all connected clients
+			for (var i = 0; i < arrClients.length; i++) {
+				arrClients[i].sendBytes(objMessage.binaryData);
 			}
 		}
 	});
