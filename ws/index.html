@@ -2,7 +2,7 @@
 	adct - WebSocket Echo Client
 	https://github.com/ArtiomL/adct
 	Artiom Lichtenstein
-	v1.0.1, 25/05/2017
+	v1.0.2, 29/05/2017
 -->
 
 <!DOCTYPE html>
@@ -12,8 +12,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet" type="text/css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" rel="stylesheet" type="text/css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet" type="text/css">
 	<style>
 		input[type="button"]:disabled {
 			background: #ccc;
@@ -89,7 +89,7 @@
 			<div class="row">
 				<div class="six columns">
 					<label for="idURL">WS URL</label>
-					<input class="u-full-width" id="idURL">
+					<input class="u-full-width" style="font-family: monospace; font-size: 14px;" id="idURL">
 				</div>
 			</div>
 			<div class="row" style="margin-top: 1%">
@@ -98,14 +98,14 @@
 			</div>
 			<div class="row" style="margin-top: 3%">
 				<label for="idText">Payload Data</label>
-				<textarea class="u-full-width" style="height: 200px;" id="idText"></textarea>
+				<textarea class="u-full-width" style="font-family: monospace; font-size: 14px; height: 200px;" id="idText"></textarea>
 			</div>
 			<div class="row" style="margin-top: 1%">
 				<input class="button-primary" id="idSend" type="button" value="Send">
 			</div>
 			<div class="row" style="margin-top: 3%">
 				<label for="idMessage">Reply</label>
-				<span id="idMessage"></span>
+				<pre><code style="font-size: 14px;" id="idMessage"></code></pre>
 			</div>
 		</form>
 	</div>
