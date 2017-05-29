@@ -2,7 +2,7 @@
 	adct - WebSocket Echo Client
 	https://github.com/ArtiomL/adct
 	Artiom Lichtenstein
-	v1.0.2, 29/05/2017
+	v1.0.3, 29/05/2017
 -->
 
 <!DOCTYPE html>
@@ -22,7 +22,8 @@
 			pointer-events: none;
 		}
 	</style>
-	<script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pako/1.0.5/pako.min.js"></script>
+	<script type="text/javascript">
 		'use strict';
 
 		function funInit() {
@@ -44,6 +45,7 @@
 			objOpen.addEventListener('click', function(objEvent) {
 				objOpen.disabled = true;
 				objSocket = new WebSocket(objURL.value, 'echo');
+				objSocket.binaryType = 'arraybuffer';
 
 				objSocket.addEventListener('open', function(objEvent) {
 					objClose.disabled = false;
@@ -53,7 +55,12 @@
 				});
 
 				objSocket.addEventListener('message', function(objEvent) {
-					objMessage.textContent = objEvent.data;
+					if (document.getElementById("idGZ").checked) {
+						objMessage.textContent = pako.inflate(objEvent.data, { to: 'string' });
+					}
+					else {
+						objMessage.textContent = objEvent.data;
+					}
 				});
 
 				objSocket.addEventListener('close', function(objEvent) {
@@ -77,7 +84,12 @@
 
 			objSend.addEventListener('click', function(objEvent) {
 				objMessage.textContent = '';
-				objSocket.send(objText.value);
+				if (document.getElementById("idGZ").checked) {
+					objSocket.send(pako.deflate(objText.value));
+				}
+				else {
+					objSocket.send(objText.value);
+				}
 			});
 		};
 	</script>
@@ -102,6 +114,7 @@
 			</div>
 			<div class="row" style="margin-top: 1%">
 				<input class="button-primary" id="idSend" type="button" value="Send">
+				<span style="margin-left: 5%">Compress &nbsp;<input type="checkbox" id="idGZ"></span>
 			</div>
 			<div class="row" style="margin-top: 3%">
 				<label for="idMessage">Reply</label>
