@@ -38,7 +38,7 @@
 
 			objState.style.color='red';
 			objState.textContent = 'Not Connected';
-			objURL.value = 'wss://asm.f5labs.one:4433';
+			objURL.value = 'ws' + window.location.protocol.substring(4) + '//' + window.location.host + ':4433';
 			objClose.disabled = true;
 			objSend.disabled = true;
 
