@@ -10,6 +10,7 @@ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install -y nodejs
 sudo git clone https://github.com/ArtiomL/adct.git /var/www/adct
 sudo cp /var/www/adct/etc/adct*.conf /etc/apache2/sites-available/
+cat /var/www/adct/etc/apache2.conf | sudo tee -a /etc/apache2/apache2.conf > /dev/null
 sudo a2dissite 000-default.conf
 sudo a2enmod ssl headers
 sudo sed -i '/Listen 80/a Listen 81' /etc/apache2/ports.conf
