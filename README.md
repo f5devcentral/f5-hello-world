@@ -22,5 +22,5 @@ A small web app for testing Application Delivery Controllers in lab environments
 
 ## Installation
 ```shell
-curl -o- https://raw.githubusercontent.com/ArtiomL/adct/master/install.sh | bash -x
+curl -so- https://raw.githubusercontent.com/ArtiomL/adct/master/install.sh | bash -x
 ```
