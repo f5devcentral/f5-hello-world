@@ -2,7 +2,7 @@
 # adct - hget: HTTP/S Client Simulator
 # https://github.com/ArtiomL/adct
 # Artiom Lichtenstein
-# v1.4, 26/07/2016
+# v1.5, 16/10/2017
 
 trap "echo; echo 'Exiting...'; rm -f scr_cURL_HGET.cookies; exit" SIGINT
 
@@ -21,7 +21,7 @@ if [ -z "$2" ]; then set -- $1 1; fi
 
 while true; do
 	if [ ${#str_SLASHES} -le 2 ]; then
-		str_URL="$1$str_BASE_URI$(( ($RANDOM % 3) + 1 ))/"
+		str_URL="$1$str_BASE_URI$(( ($RANDOM % 9) + 1 ))/"
 		if [ $(($RANDOM % 3)) = 0 ]; then
 			str_URL=$str_URL$str_FILE
 		fi
