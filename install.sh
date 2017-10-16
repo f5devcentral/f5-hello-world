@@ -2,7 +2,7 @@
 # adct - install.sh
 # https://github.com/ArtiomL/adct
 # Artiom Lichtenstein
-# v1.0.1, 16/10/2017
+# v1.0.2, 17/10/2017
 
 sudo apt-get update
 sudo apt-get -y install apache2 git php7.0
@@ -11,6 +11,7 @@ sudo apt-get install -y nodejs
 sudo git clone https://github.com/ArtiomL/adct.git /var/www/adct
 sudo cp /var/www/adct/etc/adct*.conf /etc/apache2/sites-available/
 cat /var/www/adct/etc/apache2.conf | sudo tee -a /etc/apache2/apache2.conf > /dev/null
+sudo htpasswd -cb /etc/apache2/.htpasswd user user
 sudo a2dissite 000-default.conf
 sudo a2enmod ssl headers
 sudo sed -i '/Listen 80/a Listen 81' /etc/apache2/ports.conf
