@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 # adct - install.sh
 # https://github.com/ArtiomL/adct
 # Artiom Lichtenstein
