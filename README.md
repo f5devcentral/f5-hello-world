@@ -16,7 +16,7 @@
 
 ## Description
 
-A small web app for testing Application Delivery Controllers in lab environments.
+A small web app container for testing Application Delivery Controllers in lab environments.
 
 &nbsp;&nbsp;
 
