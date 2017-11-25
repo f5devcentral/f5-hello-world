@@ -22,5 +22,5 @@ A small web app container for testing Application Delivery Controllers in lab en
 
 ## Installation
 ```shell
-curl -so- https://raw.githubusercontent.com/ArtiomL/adct/master/install.sh | bash -x
+docker run -ditP artioml/adct
 ```
