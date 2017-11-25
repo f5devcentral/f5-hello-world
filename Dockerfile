@@ -3,9 +3,9 @@
 # Artiom Lichtenstein
 # v1.0.3, 25/11/2017
 
-LABEL maintainer="Artiom Lichtenstein" version="1.0.3"
-
 FROM debian:stable-slim
+
+LABEL maintainer="Artiom Lichtenstein" version="1.0.3"
 
 # Core dependencies
 RUN apt-get update && \
