@@ -3,6 +3,8 @@
 # Artiom Lichtenstein
 # v1.0.3, 25/11/2017
 
+LABEL maintainer="Artiom Lichtenstein" version="1.0.3"
+
 FROM debian:stable-slim
 
 # Core dependencies
@@ -16,8 +18,8 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/*
 
 # adct
-RUN cp /var/www/adct/etc/adct*.conf /etc/apache2/sites-available/
-RUN cat /var/www/adct/etc/apache2.conf | tee -a /etc/apache2/apache2.conf > /dev/null
+COPY /var/www/adct/etc/adct*.conf /etc/apache2/sites-available/
+RUN cat /var/www/adct/etc/apache2.conf | tee -a /etc/apache2/apache2.conf
 RUN htpasswd -cb /etc/apache2/.htpasswd user user
 RUN a2dissite 000-default.conf
 RUN a2enmod ssl headers
