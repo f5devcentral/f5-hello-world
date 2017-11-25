@@ -3,7 +3,7 @@
 # Artiom Lichtenstein
 # v1.0.3, 25/11/2017
 
-LABEL maintainer="Artiom Lichtenstein" version="1.0.3"
+LABEL maintainer="Artiom Lichtenstein" version="1.0.2"
 
 FROM debian:stable-slim
 
