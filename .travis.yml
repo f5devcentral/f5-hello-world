@@ -1,0 +1,15 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker pull artioml/adct
+  - docker run -dit -p 80-81:80-81 -p 443:443 artioml/adct
+  - docker ps -a
+
+install:
+  - apt-get install -y curl
+
+script:
+  - curl -k https://127.0.0.0:443/secure/
