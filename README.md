@@ -1,4 +1,5 @@
 # <img align="center" src="img/adct.png">&nbsp;&nbsp;adct
+[![Build Status](https://img.shields.io/travis/ArtiomL/adct.svg)](https://travis-ci.org/ArtiomL/adct)
 [![Releases](https://img.shields.io/github/release/ArtiomL/adct.svg)](https://github.com/ArtiomL/adct/releases)
 [![Commits](https://img.shields.io/github/commits-since/ArtiomL/adct/v1.0.3.svg?label=commits%20since)](https://github.com/ArtiomL/adct/commits/master)
 [![Maintenance](https://img.shields.io/maintenance/yes/2017.svg)](https://github.com/ArtiomL/adct/graphs/code-frequency)
