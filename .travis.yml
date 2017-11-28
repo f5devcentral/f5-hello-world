@@ -1,7 +1,7 @@
 # adct - Build
 # https://github.com/ArtiomL/adct
 # Artiom Lichtenstein
-# v1.0.0, 27/11/2017
+# v1.0.1, 29/11/2017
 
 sudo: required
 
@@ -17,4 +17,4 @@ install:
   - sudo apt-get install -y curl
 
 script:
-  - curl -k https://127.0.0.1:443/secure/ -u user:user
+  - curl -k https://127.0.0.1:443/uri13/secure/index.php -u user:user
