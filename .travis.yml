@@ -8,8 +8,6 @@ sudo: required
 services:
   - docker
 
-language: node_js
-
 before_install:
   - docker pull artioml/adct
   - docker pull artioml/adct:ws 
@@ -19,12 +17,7 @@ before_install:
 
 install:
   - sudo apt-get install -y curl
-  - npm install -g wscat2
-  - which wscat
-  - cat /usr/bin/wscat
-  - sed -i '/function connect(options) {/a options.protocol = "echo";' /usr/local/node_modules/wscat2/lib/wscat.js
 
 script:
   - curl -s http://127.0.0.1:81/uri$(jot -r 1 0 1313)/index.php | grep 'Hello World'
   - curl -sk https://127.0.0.1:443/uri$(jot -r 1 0 1313)/secure/index.php -u user:user | grep 'Hello user'
-  - echo '{"build":"passing"}' | wscat ws://127.0.0.1:4433/ | grep 'passing'
