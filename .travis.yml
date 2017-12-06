@@ -20,6 +20,8 @@ before_install:
 install:
   - sudo apt-get install -y curl
   - npm install -g wscat2
+  - which wscat
+  - cat /usr/bin/wscat
   - sed -i '/function connect(options) {/a options.protocol = "echo";' /usr/local/node_modules/wscat2/lib/wscat.js
 
 script:
