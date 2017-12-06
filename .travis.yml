@@ -20,7 +20,7 @@ before_install:
 install:
   - sudo apt-get install -y curl
   - npm install -g wscat2
-  - sed -i '/function connect(options) {/a options.protocol = "echo";' /usr/lib/node_modules/wscat2/lib/wscat.js
+  - sed -i '/function connect(options) {/a options.protocol = "echo";' /usr/local/node_modules/wscat2/lib/wscat.js
 
 script:
   - curl -s http://127.0.0.1:81/uri$(jot -r 1 0 1313)/index.php | grep 'Hello World'
