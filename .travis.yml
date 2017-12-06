@@ -19,5 +19,5 @@ install:
   - sudo apt-get install -y curl
 
 script:
-  - curl -s http://127.0.0.1:81/uri$(jot -r 1 0 1313)/index.php | grep 'Hello World'
-  - curl -sk https://127.0.0.1:443/uri$(jot -r 1 0 1313)/secure/index.php -u user:user | grep 'Hello user'
+  - curl -s http://127.0.0.1:81/uri$(shuf -i 0-1313 -n 1)/index.php | grep 'Hello World'
+  - curl -sk https://127.0.0.1:443/uri$(shuf -i 0-1313 -n 1)/secure/index.php -u user:user | grep 'Hello user'
