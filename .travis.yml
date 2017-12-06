@@ -18,7 +18,7 @@ before_install:
   - docker ps -a
 
 install:
-  - apt-get install -y curl
+  - sudo apt-get install -y curl
   - npm install -g wscat2
   - sed -i '/function connect(options) {/a options.protocol = "echo";' /usr/lib/node_modules/wscat2/lib/wscat.js
 
