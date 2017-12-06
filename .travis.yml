@@ -1,20 +1,28 @@
 # adct - CI Build
 # https://github.com/ArtiomL/adct
 # Artiom Lichtenstein
-# v1.0.1, 29/11/2017
+# v1.0.2, 05/12/2017
 
 sudo: required
 
 services:
   - docker
 
+language: node_js
+
 before_install:
   - docker pull artioml/adct
+  - docker pull artioml/adct:ws 
   - docker run -dit -p 80-81:80-81 -p 443:443 artioml/adct
+  - docker run -dit -p 4433:4433 artioml/adct:ws
   - docker ps -a
 
 install:
-  - sudo apt-get install -y curl
+  - apt-get install -y curl
+  - npm install -g wscat2
+  - sed -i '/function connect(options) {/a options.protocol = "echo";' /usr/lib/node_modules/wscat2/lib/wscat.js
 
 script:
-  - curl -k https://127.0.0.1:443/uri13/secure/index.php -u user:user
+  - curl -s http://127.0.0.1:81/uri$(jot -r 1 0 1313)/index.php | grep 'Hello World'
+  - curl -sk https://127.0.0.1:443/uri$(jot -r 1 0 1313)/secure/index.php -u user:user | grep 'Hello user'
+  - echo '{"build":"passing"}' | wscat ws://127.0.0.1:4433/ | grep 'passing'
