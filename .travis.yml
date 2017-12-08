@@ -24,4 +24,4 @@ install:
 script:
   - curl -s http://127.0.0.1:81/uri$(shuf -i 0-1313 -n 1)/index.php | grep 'Hello World'
   - curl -sk https://127.0.0.1:443/uri$(shuf -i 0-1313 -n 1)/secure/index.php -u user:user | grep 'Hello user'
-  - echo 'hello_world' | node_modules/ts-node/dist/bin.js src/cli.ts -s echo ws://192.168.118.133:32770 | grep 'hello_world'
+  - echo 'hello_world' | node_modules/ts-node/dist/bin.js src/cli.ts -s echo ws://127.0.0.1:4433 | grep 'hello_world'
