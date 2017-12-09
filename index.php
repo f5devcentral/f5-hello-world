@@ -2,7 +2,7 @@
 	adct - index.php
 	https://github.com/ArtiomL/adct
 	Artiom Lichtenstein
-	v3.0, 02/05/2017
+	v3.0.1, 09/12/2017
 -->
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@
 		}
 	</script>
 	<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet" type="text/css">
+	<link href="css/skeleton.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div class="container">
