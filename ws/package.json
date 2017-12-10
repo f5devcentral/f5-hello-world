@@ -1,6 +1,8 @@
 {
-	"name": "WebSocket Echo",
-	"version": "1.0.1",
+	"name": "wsecho",
+	"description": "WebSocket Echo",
+	"version": "1.0.3",
+	"author": "Artiom Lichtenstein",
 	"repository": { 
 		"type" : "git",
 		"url" : "https://github.com/ArtiomL/adct.git"
