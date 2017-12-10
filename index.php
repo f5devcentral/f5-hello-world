@@ -26,7 +26,7 @@
 			}
 		}
 	</script>
-	<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+	<link href="css/fonts.css" rel="stylesheet" type="text/css">
 	<link href="css/skeleton.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
