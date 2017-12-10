@@ -12,8 +12,8 @@ RUN apk add --update --no-cache nodejs && \
 	rm -rf /var/cache/apk/*
 
 # adct:ws
-COPY / /opt/ws/
-WORKDIR /opt/ws/
+COPY / /opt/adct/ws/
+WORKDIR /opt/adct/ws/
 RUN npm install websocket --save
 
 # Expose ports
