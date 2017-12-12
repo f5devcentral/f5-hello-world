@@ -8,7 +8,7 @@
 		"url" : "https://github.com/ArtiomL/adct.git"
 	},
 	"dependencies": {
-		"websocket": "*"
+		"websocket": "latest"
 	},
 	"license" : "MIT"
 }
