@@ -1,7 +1,7 @@
 # adct - CI Build
 # https://github.com/ArtiomL/adct
 # Artiom Lichtenstein
-# v1.0.4, 13/12/2017
+# v1.0.5, 15/12/2017
 
 sudo: required
 
@@ -20,11 +20,9 @@ before_install:
   - docker ps -a
 
 install:
-  - git clone https://github.com/jnordberg/wscat.git
-  - cd wscat
-  - npm install
+  - npm install -g wscat3
 
 script:
   - curl -s http://127.0.0.1:81/uri$(shuf -i 0-1313 -n 1)/index.php | grep 'Hello World'
   - curl -sk https://127.0.0.1:443/uri$(shuf -i 0-1313 -n 1)/secure/index.php -u user:user | grep 'Hello user'
-  - echo 'hello_world' | node_modules/ts-node/dist/bin.js src/cli.ts -s echo ws://127.0.0.1:4433 | grep 'hello_world'
+  - echo 'hello_world' | wscat -s echo ws://127.0.0.1:4433 | grep 'hello_world'
