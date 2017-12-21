@@ -5,7 +5,7 @@
 
 FROM debian:stable-slim
 
-LABEL maintainer="Artiom Lichtenstein" version="1.0.4"
+LABEL maintainer="Artiom Lichtenstein" version="1.0.5"
 
 # Core dependencies
 RUN apt-get update && \
