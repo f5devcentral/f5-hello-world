@@ -1,7 +1,7 @@
 # adct - CI Build
 # https://github.com/ArtiomL/adct
 # Artiom Lichtenstein
-# v1.0.5, 15/12/2017
+# v1.0.5, 22/12/2017
 
 sudo: required
 
@@ -15,7 +15,7 @@ services:
 before_install:
   - docker pull artioml/adct
   - docker pull artioml/adct:ws 
-  - docker run -dit -p 80-81:80-81 -p 443:443 artioml/adct
+  - docker run -dit -p 80:8080 -p 443:8443 artioml/adct
   - docker run -dit -p 4433:4433 artioml/adct:ws
   - docker ps -a
 
@@ -23,6 +23,6 @@ install:
   - npm install -g wscat3
 
 script:
-  - curl -s http://127.0.0.1:81/uri$(shuf -i 0-1313 -n 1)/index.php | grep 'Hello World'
-  - curl -sk https://127.0.0.1:443/uri$(shuf -i 0-1313 -n 1)/secure/index.php -u user:user | grep 'Hello user'
+  - curl -s http://127.0.0.1/uri$(shuf -i 0-1313 -n 1)/index.php | grep 'Hello World'
+  - curl -sk https://127.0.0.1/uri$(shuf -i 0-1313 -n 1)/secure/index.php -u user:user | grep 'Hello user'
   - echo 'hello_world' | wscat -s echo ws://127.0.0.1:4433 | grep 'hello_world'
