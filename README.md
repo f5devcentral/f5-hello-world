@@ -23,6 +23,13 @@ A small web app container for testing Application Delivery Controllers in lab en
 &nbsp;&nbsp;
 
 ## Installation
+
+### Main Site
 ```shell
-docker run -ditP artioml/adct
+docker run -dit -p 80:8080 -p 443:8443 artioml/adct
+```
+
+### WebSocket Echo
+```shell
+docker run -dit -p 4433:4433 artioml/adct:ws
 ```
