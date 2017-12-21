@@ -24,7 +24,7 @@ RUN cat /var/www/adct/etc/apache2.conf | tee -a /etc/apache2/apache2.conf
 RUN htpasswd -cb /etc/apache2/.htpasswd user user
 RUN a2dissite 000-default.conf
 RUN a2enmod ssl headers
-RUN sed -i 's/Listen 80/Listen 8080/' /etc/apache2/ports.conf
+RUN sed -i 's/Listen 80/Listen 8080/g' /etc/apache2/ports.conf
 RUN sed -i 's/Listen 443/Listen 8443/g' /etc/apache2/ports.conf
 RUN a2ensite adct.conf adct-ssl.conf
 
