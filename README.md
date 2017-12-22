@@ -12,6 +12,8 @@
 ## Table of Contents
 - [Description](#description)
 - [Installation](#installation)
+	- [Main Site](#main-site)
+	- [WebSocket Echo](#websocket-echo)
 - [License](LICENSE)
 
 &nbsp;&nbsp;
