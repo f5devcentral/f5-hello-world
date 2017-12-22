@@ -29,4 +29,4 @@ cd /var/www/adct/ws
 sudo npm install
 sudo touch /var/log/ws-echo.log
 sudo chmod 646 /var/log/ws-echo.log
-nohup node server.js 4433 > /var/log/ws-echo.log &
+nohup node server.js 4433 > /var/log/ws-echo.log 2>&1 &
