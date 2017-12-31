@@ -1,7 +1,7 @@
 # adct - CI Build
 # https://github.com/ArtiomL/adct
 # Artiom Lichtenstein
-# v1.0.5, 22/12/2017
+# v1.0.6, 31/12/2017
 
 sudo: required
 
@@ -26,3 +26,7 @@ script:
   - curl -s http://127.0.0.1/uri$(shuf -i 0-1313 -n 1)/index.php | grep 'Hello World'
   - curl -sk https://127.0.0.1/uri$(shuf -i 0-1313 -n 1)/secure/index.php -u user:user | grep 'Hello user'
   - echo 'hello_world' | wscat -s echo ws://127.0.0.1:4433 | grep 'hello_world'
+
+notifications:
+  slack:
+    secure: "rZStkjLW9PYOuS1lYvNWTPPr1NvGQh0Myvah5eoLEuq+c1BAyis1IS629DbkjYsSssXUpS2tNTvDY1oQx4D9JMyFx9LrqmOqeao4p3vg2SPZKuCc8codxzBX2OyZ7t0kug6UgGTO2ChqqSKYq8bPCTn9Dnq8LmCP3f9eUQ+BVHYiaUU1OGhuH7QpH8MNHgurlZCk7a3mEez0nKMHHBD1yUgDe9vclZJ0DqN0G9lSrgwD2DhS9XWZ+Bo7J5K+OcbZMVhuErWWzkKdiN+Y/9ubMIYRB43u35oz0OGBEjIiPR9HROliMO0MESZe2h+l8ofC2W1Qi9k2Mytv2LYolKjZT5jNiLooD6r+nnKqPUj0FoLVgw56XZn+46Y4ajbLCsCS8mxabD4OXw4qMarTrnaps+hxo5dq6DaJW2Ackupsz/LIk9gcN7mDKn+SGHlGR+TGqcFgTbPDtSn34SbHC3TbB//Ul4B4An8RZdThJJNcv/yxQSIwxIRviHYIhYkgyRgqUrH2zGTVqh8AiPozCyjEDq2utbuF18deiLxVYMjM0IBNzoL550qE10evF7PeXWhoDQPS45Quy1oEvVqsY1fqxk94N3YN1vFHnflD3VLnU4r+44u4lGU3qRNE/2h6p/3Vx1fqE4Nqqcs74vxxs2WU/icCcoADGhN08+vdQhrnKq0="
