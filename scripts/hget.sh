@@ -1,6 +1,6 @@
 #!/bin/bash
-# adct - hget: HTTP/S Client Simulator
-# https://github.com/ArtiomL/adct
+# f5-hello-world - hget: HTTP/S Client Simulator
+# https://github.com/f5devcentral/f5-hello-world
 # Artiom Lichtenstein
 # v1.5, 16/10/2017
 
