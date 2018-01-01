@@ -26,3 +26,7 @@ script:
   - curl -s http://127.0.0.1/uri$(shuf -i 0-1313 -n 1)/index.php | grep 'Hello World'
   - curl -sk https://127.0.0.1/uri$(shuf -i 0-1313 -n 1)/secure/index.php -u user:user | grep 'Hello user'
   - echo 'hello_world' | wscat -s echo ws://127.0.0.1:4433 | grep 'hello_world'
+
+notifications:
+  slack:
+    secure: "k4ZMg8a6dEUUPRaj7aMLQAMFVvzYIB9WUWgb8T5u425rLO/HevEMzDJ7xSbitQ3IMUjzepn49BMpmeU3gHd9k3lEPRQuI4QYKjp2zHShwmFz6QZY6WzMWtiLU0Q6veMTpZeRGjdGivoW0priEg0O069SA2o4vdMIfcW6bIPh2gYn+6naA0t+rA4SOoe/elfszkg8XmwILkHewUUK4+SiFwYs96n5/x8JR71DXj11dRmpjnLskdXNCc+tew+F1wz/bHW583SFubEnQbla28m3MiYdORrpSLQcIeak7XfFC5k6RYVqKO9jpS3Os2pQ4FtIhjHHP+lWtKPxLbnq8s8io10ZM+fBwmxnkLbnV9kvgT25RwqRsqWog5BHC4KqdhU+XAavcCGnGgLH6Oil2Ee0Quo/w+Zo3x3C3FtFQt7OkGtUsfoVcaMmYtO1C+F9PU224LXMRTcMxSnTKJtQP2oakeMZwMeSb3g/vgU7GuEoym7U28Y4kqOnxexuFSrqmLAfdr9kM0kgMgEv3Nkjn2hD7Qp2nEAh5DTnbp1U2RL3ZRnoHJg+m8Mup9MU9mP/Y7S5PF57zt04KeH0C5qUqx6JmCWtZwE8nxZcDGIJL33KEEp00Ppi/EVxtVWmx4xnJh50UYveX9Yh8nfpcUnf2MoMNy32O3lKrh2rToByPQ+tkJU="
