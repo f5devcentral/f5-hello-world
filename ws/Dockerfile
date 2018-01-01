@@ -1,5 +1,5 @@
-# adct:ws - Dockerfile
-# https://github.com/ArtiomL/adct
+# f5-hello-world:ws - Dockerfile
+# https://github.com/f5devcentral/f5-hello-world
 # Artiom Lichtenstein
 # v1.0.5, 22/12/2017
 
