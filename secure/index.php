@@ -1,8 +1,8 @@
 <!--
-	adct - index.php
-	https://github.com/ArtiomL/adct
+	f5-hello-world - index.php
+	https://github.com/f5devcentral/f5-hello-world
 	Artiom Lichtenstein
-	v3.0.1, 09/12/2017
+	v3.0.2, 01/01/2018
 -->
 
 <!DOCTYPE html>
@@ -64,10 +64,9 @@
 			</div>
 		</div>
 		<div class="docs-section" style="margin-top: 30px; float:right;">
-			Artiom Lichtenstein<br>Systems Engineer<br>F5 Networks<br><a href="https://artioml.net/" target="_blank">https://artioml.net</a>
 			<p style="margin-top: 10px;">
-				<a href="https://github.com/ArtiomL/adct" target="_blank"><img src="https://img.shields.io/maintenance/yes/2018.svg"></a>
-				<a href="https://hub.docker.com/r/artioml/adct/" target="_blank"><img src="https://img.shields.io/docker/pulls/artioml/adct.svg?label=docker"></a>
+				<a href="https://github.com/f5devcentral/f5-hello-world" target="_blank"><img src="https://img.shields.io/maintenance/yes/2018.svg"></a>
+				<a href="https://hub.docker.com/r/f5devcentral/f5-hello-world/" target="_blank"><img src="https://img.shields.io/docker/pulls/f5devcentral/f5-hello-world.svg?label=docker"></a>
 			</p>
 		</div>
 	</div>
