@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /*
-	adct - WebSocket Echo Server
-	https://github.com/ArtiomL/adct
+	f5-hello-world - WebSocket Echo Server
+	https://github.com/f5devcentral/f5-hello-world
 	Artiom Lichtenstein
 	v1.0.3, 29/05/2017
 */
