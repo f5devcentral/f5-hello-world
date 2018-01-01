@@ -2,7 +2,7 @@
 	f5-hello-world - index.php
 	https://github.com/f5devcentral/f5-hello-world
 	Artiom Lichtenstein
-	v3.0.1, 22/12/2017
+	v3.0.2, 01/01/2018
 -->
 
 <!DOCTYPE html>
