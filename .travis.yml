@@ -1,32 +1,46 @@
 # f5-hello-world - CI Build
 # https://github.com/f5devcentral/f5-hello-world
-# Artiom Lichtenstein
-# v1.0.6, 31/12/2017
+# Artiom Lichtenstein, Hitesh Patel
 
 sudo: required
 
+env:
+  global:
+  - COMMIT=${TRAVIS_COMMIT::8}
+  - REPO=f5devcentral/f5-hello-world
+  - secure: "FH10q9+Lrmvw+Uih/W1j36wvef3hpWeL8oln5Ig7JswpDUJEnpg1QyB3AobDDFjfsvGS64zL7ZcxXErwOmivMb1gJJCLu+p56uOjNhuaxP7clqxcPmmib+pi9hXgoewIi9OBKTLFd51hqd2jCvMrMPEhRepzTm4Cyw1En1YA8BFH/+MVN27j4564r9BJyFjYmZt/xrMSH5Iz4JLs/2CC9RldLnyAZdb9Y5b/qbbmU4FLzqOxv6gf3FTJo64l11AOactPApGhYZTAUW436NGXW4oifg6oCGGo4qTAhK4jCLBcI/tvi9v8AyoYl6T/QwZfnNDF3xZEgUmk5BwFbUCBmMr3P6zAEBTtRYECeBFgnT75JCJceuN6GbFgtgbj7kWAmleg98Lvo6NejkKtIKnFsfqfpV1sEYHRZlZqZmwKjxY7GVGF9vZ4HHzWlg4MphISk/LdVRi5G3m2XWmuUDJ3bIKiG5odUULjX45RFQ6lfueGdGbdmbjmfOIb3lPs/k3oaXYznPlsvEMxZtlhe4YIutoTxoteDVYIFuGJP3ZNOKqXY9CS/Pb2fWaF3PXEHsnmE/rriGJfSrLWznJ47hRJMUOzsZF5NfHKv3SLUmp10jK8dSnPK1BPrtzLskfOFV/5/whRfUJO6aSkxuwPm6FDv7C6cWWVzRq1hfgfoaO+k/A="
+  - secure: "QdAwJw3G3OzNDmxQVz3V6mwMGJ7ssxKoUmAX+DE049G4qO4GMOvo5SFRiD1JrTimLRZKCQk0SnZzyLLqkmCsdCst5uUcO45Lsm1x3p1l8xfa8fwA4yfqCNNFQ484xyyWxwPwkEiI1mAW/wJoinNuWcaZb3B8W9G6J9p671Fl8uyAm8HaExf0mB2h9CRJeVJYejHwX1OLb/V2AQVsG2KapcpL6OC6F6kJ1KXdvUY47awJR3Z7rg8ha9n4XY/Mpb478IKOQIKayXZzDy5rVF/gAuRFXVnCq43ZQItSZQQObXZCOxJyxOJ/JlJuYjKd9LU4brRYggWTtLToLoDkKEDeHxPkRSeIDpSpl1oWYbVRIHXgB/VhdR7XDDmyPdcNe99NjI0XoWxl3DlGicXaKzIr9+hqY5h27I9i2TKLJscmOwnrT6DW6F4E5ZtVphGUo5pPGfKglQ0DCS0075nawczJVo2s7wcsS3uldbsbkCed/STaGvUEpXjclDxnhc7nSlZUmX+4K3cfdrLp6TyEahDra8qft0n1Khx5J72vycKgERUOGSxnQ1+8CZ7bNKYW2haRCYywSOmGrQBBG+yZOMZ3gUGUBMKrEKhD2wSbIjrC2NFxtmiS/R/98dELSkw5nL2jYQuwC/QxKVoJEfr+u/Qk5U4F65UaoqP6jZCu9H8cYmY="
+
 language: node_js
+
 node_js:
   - "lts/*"
 
 services:
   - docker
 
-before_install:
-  - docker pull f5devcentral/f5-hello-world
-  - docker pull f5devcentral/f5-hello-world:ws 
-  - docker run -dit -p 80:8080 -p 443:8443 f5devcentral/f5-hello-world
-  - docker run -dit -p 4433:4433 f5devcentral/f5-hello-world:ws
-  - docker ps -a
-
 install:
   - npm install -g wscat3
 
 script:
+  - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
+  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
+  - export TAG=`if [[ $TRAVIS_PULL_REQUEST == "false" ]] && [[ $BRANCH == "master" ]]; then echo "latest"; else echo "$BRANCH"; fi`
+  - echo "TAG=$TAG"
+  - export REPO=f5devcentral/f5-hello-world
+  - docker build -t $REPO:$TAG -f Dockerfile .
+  - cd ws 
+  - docker build -t $REPO:$TAG-ws -f Dockerfile .
+  - cd ..
+  - docker run -dit -p 80:8080 -p 443:8443 $REPO:$TAG
+  - docker run -dit -p 4433:4433 $REPO:$TAG-ws
+  - docker ps -a
   - curl -s http://127.0.0.1/uri$(shuf -i 0-1313 -n 1)/index.php | grep 'Hello World'
   - curl -sk https://127.0.0.1/uri$(shuf -i 0-1313 -n 1)/secure/index.php -u user:user | grep 'Hello user'
   - echo 'hello_world' | wscat -s echo ws://127.0.0.1:4433 | grep 'hello_world'
 
-notifications:
-  slack:
-    secure: "k4ZMg8a6dEUUPRaj7aMLQAMFVvzYIB9WUWgb8T5u425rLO/HevEMzDJ7xSbitQ3IMUjzepn49BMpmeU3gHd9k3lEPRQuI4QYKjp2zHShwmFz6QZY6WzMWtiLU0Q6veMTpZeRGjdGivoW0priEg0O069SA2o4vdMIfcW6bIPh2gYn+6naA0t+rA4SOoe/elfszkg8XmwILkHewUUK4+SiFwYs96n5/x8JR71DXj11dRmpjnLskdXNCc+tew+F1wz/bHW583SFubEnQbla28m3MiYdORrpSLQcIeak7XfFC5k6RYVqKO9jpS3Os2pQ4FtIhjHHP+lWtKPxLbnq8s8io10ZM+fBwmxnkLbnV9kvgT25RwqRsqWog5BHC4KqdhU+XAavcCGnGgLH6Oil2Ee0Quo/w+Zo3x3C3FtFQt7OkGtUsfoVcaMmYtO1C+F9PU224LXMRTcMxSnTKJtQP2oakeMZwMeSb3g/vgU7GuEoym7U28Y4kqOnxexuFSrqmLAfdr9kM0kgMgEv3Nkjn2hD7Qp2nEAh5DTnbp1U2RL3ZRnoHJg+m8Mup9MU9mP/Y7S5PF57zt04KeH0C5qUqx6JmCWtZwE8nxZcDGIJL33KEEp00Ppi/EVxtVWmx4xnJh50UYveX9Yh8nfpcUnf2MoMNy32O3lKrh2rToByPQ+tkJU="
+after_success:
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - docker push $REPO:$TAG
+  - docker push $REPO:$TAG-ws
+
