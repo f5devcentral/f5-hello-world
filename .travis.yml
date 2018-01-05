@@ -13,6 +13,9 @@ env:
 
 language: node_js
 
+node_js:
+  - "lts/*"
+
 services:
   - docker
 
@@ -29,8 +32,8 @@ script:
   - cd ws 
   - docker build -t $REPO:$TAG-ws -f Dockerfile .
   - cd ..
-  - docker run -dit -p 80:8080 -p 443:8443 f5devcentral/f5-hello-world
-  - docker run -dit -p 4433:4433 f5devcentral/f5-hello-world:ws
+  - docker run -dit -p 80:8080 -p 443:8443 $REPO:$TAG
+  - docker run -dit -p 4433:4433 $REPO:$TAG-ws
   - docker ps -a
   - curl -s http://127.0.0.1/uri$(shuf -i 0-1313 -n 1)/index.php | grep 'Hello World'
   - curl -sk https://127.0.0.1/uri$(shuf -i 0-1313 -n 1)/secure/index.php -u user:user | grep 'Hello user'
