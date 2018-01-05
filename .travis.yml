@@ -43,8 +43,8 @@ script:
 after_success:
   - docker images
   - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-    docker login -u $DOCKER_USER -p $DOCKER_PASS
-    docker push $REPO:$TAG
-    docker push $REPO:$WSTAG
-    fi
+    docker login -u $DOCKER_USER -p $DOCKER_PASS;
+    docker push $REPO:$TAG;
+    docker push $REPO:$WSTAG;
+    fi;
 
