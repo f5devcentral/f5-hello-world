@@ -20,11 +20,14 @@ install:
   - npm install -g wscat3
 
 script:
-  - export TAG=`if [[ $TRAVIS_PULL_REQUEST == "false" ]] && [[ $TRAVIS_BRANCH == "master" ]]; then echo "latest"; else echo "$TRAVIS_PULL_REQUEST_BRANCH-"; fi`
+  - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
+  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
+  - export TAG=`if [[ $TRAVIS_PULL_REQUEST == "false" ]] && [[ $BRANCH == "master" ]]; then echo "latest"; else echo "$BRANCH"; fi`
+  - echo "TAG=$TAG"
   - export REPO=f5devcentral/f5-hello-world
   - docker build -t $REPO:$TAG -f Dockerfile .
   - cd ws 
-  - docker build -t $REPO:$TAGws -f Dockerfile .
+  - docker build -t $REPO:$TAG-ws -f Dockerfile .
   - cd ..
   - docker run -dit -p 80:8080 -p 443:8443 f5devcentral/f5-hello-world
   - docker run -dit -p 4433:4433 f5devcentral/f5-hello-world:ws
@@ -36,5 +39,5 @@ script:
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
   - docker push $REPO:$TAG
-  - docker push $REPO:$TAGws
+  - docker push $REPO:$TAG-ws
 
