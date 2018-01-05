@@ -26,14 +26,15 @@ script:
   - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
   - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
   - export TAG=`if [[ $TRAVIS_PULL_REQUEST == "false" ]] && [[ $BRANCH == "master" ]]; then echo "latest"; else echo "$BRANCH"; fi`
-  - echo "TAG=$TAG"
+  - export WSTAG=`if [[ $TAG == "latest" ]]; then echo "ws"; else echo "$TAG-ws"; fi`
+  - echo "TAG=$TAG, WSTAG=$WSTAG"
   - export REPO=f5devcentral/f5-hello-world
   - docker build -t $REPO:$TAG -f Dockerfile .
-  - cd ws 
-  - docker build -t $REPO:$TAG-ws -f Dockerfile .
+  - cd ws
+  - docker build -t $REPO:$WSTAG -f Dockerfile .
   - cd ..
   - docker run -dit -p 80:8080 -p 443:8443 $REPO:$TAG
-  - docker run -dit -p 4433:4433 $REPO:$TAG-ws
+  - docker run -dit -p 4433:4433 $REPO:$WSTAG
   - docker ps -a
   - curl -s http://127.0.0.1/uri$(shuf -i 0-1313 -n 1)/index.php | grep 'Hello World'
   - curl -sk https://127.0.0.1/uri$(shuf -i 0-1313 -n 1)/secure/index.php -u user:user | grep 'Hello user'
@@ -41,6 +42,7 @@ script:
 
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - docker images
   - docker push $REPO:$TAG
-  - docker push $REPO:$TAG-ws
+  - docker push $REPO:$WSTAG
 
