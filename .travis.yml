@@ -41,8 +41,10 @@ script:
   - echo 'hello_world' | wscat -s echo ws://127.0.0.1:4433 | grep 'hello_world'
 
 after_success:
-  - docker login -u $DOCKER_USER -p $DOCKER_PASS
   - docker images
-  - docker push $REPO:$TAG
-  - docker push $REPO:$WSTAG
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    docker login -u $DOCKER_USER -p $DOCKER_PASS
+    docker push $REPO:$TAG
+    docker push $REPO:$WSTAG
+    fi
 
