@@ -2,7 +2,7 @@
 	f5-hello-world - Main Page
 	https://github.com/f5devcentral/f5-hello-world
 	Artiom Lichtenstein
-	v2.2.0, 19/12/2017
+	v2.2.1, 08/01/2018
 -->
 
 <!DOCTYPE html>
@@ -34,7 +34,7 @@
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 		<div class="container">
 			<div class="docs-section marTop15">
-				<h4 class="animate fadeInDown one">hello, world</h4>
+				<h4 class="animate fadeInDown one">hello, <?php if ($node = getenv("NODE")) echo $node; else echo "world" ?></h4>
 				<h5 class="animate fadeIn two">F5 Super-NetOps Training Series</a></h5>
 				<ul class="soc animate fadeIn two marTop30">
 					<li><a href="https://f5.com/" target="_blank"><img style="margin-bottom: -13px" src="img/f5.svg" width="48"></a></li>

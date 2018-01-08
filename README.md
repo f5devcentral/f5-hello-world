@@ -14,6 +14,7 @@
 - [Installation](#installation)
 	- [Main Site](#main-site)
 	- [WebSocket Echo](#websocket-echo)
+- [Service Tree](#service-tree)
 - [License](LICENSE)
 
 &nbsp;&nbsp;
@@ -31,7 +32,26 @@ A small web app container for testing Application Delivery Controllers in lab en
 docker run -dit -p 80:8080 -p 443:8443 f5devcentral/f5-hello-world
 ```
 
-#### WebSocket Echo
+Add a custom node name to the page title:
+
+```shell
+docker run -dit -p 80:8080 -p 443:8443 -e NODE='Jon' f5devcentral/f5-hello-world
+```
+
+#### WebSocket Echo (`/ws/`)
 ```shell
 docker run -dit -p 4433:4433 f5devcentral/f5-hello-world:ws
+```
+
+&nbsp;&nbsp;
+
+## Service Tree
+```
+/
+├── secure/
+│   └── Basic Authentication (user:user)
+├── uri[0-9]*/
+│   └── Alias for DocumentRoot (/var/www/adct/)
+└── ws/
+    └── WebSocket Echo
 ```

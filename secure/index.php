@@ -2,7 +2,7 @@
 	f5-hello-world - index.php
 	https://github.com/f5devcentral/f5-hello-world
 	Artiom Lichtenstein
-	v3.0.2, 01/01/2018
+	v3.0.2, 07/01/2018
 -->
 
 <!DOCTYPE html>
@@ -32,7 +32,8 @@
 <body>
 	<div class="container">
 		<div class="docs-section" style="margin-top: 30px">
-			Hello <?php if (isset($_SERVER["PHP_AUTH_USER"])) { echo $_SERVER["PHP_AUTH_USER"]; } else { echo "World"; } ?>!<br>
+			<?php if ($node = getenv("NODE")) echo $node . "<br>"; ?>
+			hello, <?php if ($user = $_SERVER["PHP_AUTH_USER"]) echo $user; else echo "world"; ?><br>
 			ip.src: <?php echo $_SERVER["REMOTE_ADDR"]; ?><br>
 			tcp.srcport: <?php echo $_SERVER["REMOTE_PORT"]; ?><br>
 			ip.dst: <?php echo $_SERVER["SERVER_ADDR"]; ?><br>
