@@ -28,6 +28,8 @@
 	</script>
 	<link href="css/fonts.css" rel="stylesheet" type="text/css">
 	<link href="css/skeleton.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="css/custom.css" type="text/css">
+	<script src="custom.js" type="text/javascript"></script>
 </head>
 <body>
 	<div class="container">

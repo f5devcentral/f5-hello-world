@@ -15,6 +15,7 @@
 	- [Main Site](#main-site)
 	- [WebSocket Echo](#websocket-echo)
 - [Service Tree](#service-tree)
+- [Customizations](#customizations)
 - [License](LICENSE)
 
 &nbsp;&nbsp;
@@ -54,4 +55,17 @@ docker run -dit -p 4433:4433 f5devcentral/f5-hello-world:ws
 │   └── Alias for DocumentRoot (/var/www/adct/)
 └── ws/
     └── WebSocket Echo
+```
+
+## Customizations
+
+If you would like to add custom CSS or JavaScript you can do so by mounting
+the `css/custom.css` and/or the `custom.js` file(s) into the container instance;
+for example:
+
+```shell
+docker run -dit -p 80:8080 -p 443:8443 \
+ -v /path/to/your/custom.css:/var/www/adct/css/custom.css \
+ -v /path/to/your/custom.js:/var/www/adct/custom.js \
+ f5devcentral/f5-hello-world
 ```
