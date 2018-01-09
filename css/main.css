@@ -5,12 +5,22 @@
 	v2.0.0, 19/12/2017
 */
 
-@font-face {
-	font-family: 'si';
-	src: url('fonts/socicon.woff') format('woff'),
-		 url('fonts/socicon.woff2') format('woff2');
-	font-weight: normal;
-	font-style: normal;
+body {
+	font-size:1.0em;
+	line-height:1.2;
+	font-weight:400;
+	font-family:Raleway,HelveticaNeue,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	color:#222
+}
+
+.table-data {
+	font-size:14px;
+	line-height:19px;
+	font-family:"Cousine",monospace;
+}
+
+.table-data th {
+	background-color: #eee;
 }
 
 .soc {
@@ -100,27 +110,27 @@
 }
 
 .one {
+	-webkit-animation-delay: 0.2s;
+	-moz-animation-delay: 0.2s;
+	animation-delay: 0.2s;
+}
+
+.two {
 	-webkit-animation-delay: 0.4s;
 	-moz-animation-delay: 0.4s;
 	animation-delay: 0.4s;
 }
 
-.two {
-	-webkit-animation-delay: 1.7s;
-	-moz-animation-delay: 1.7s;
-	animation-delay: 1.7s;
-}
-
 .three {
-	-webkit-animation-delay: 2.3s;
-	-moz-animation-delay: 2.3s;
-	animation-delay: 2.3s;
+	-webkit-animation-delay: 0.8s;
+	-moz-animation-delay: 0.8s;
+	animation-delay: 0.8s;
 }
 
 .four {
-	-webkit-animation-delay: 3.3s;
-	-moz-animation-delay: 3.3s;
-	animation-delay: 3.3s;
+	-webkit-animation-delay: 1.6s;
+	-moz-animation-delay: 1.6s;
+	animation-delay: 1.6s;
 }
 
 @-webkit-keyframes fadeIn {
@@ -187,4 +197,20 @@
 
 .txtRight {
 	text-align: right;
+}
+
+.hw-nodeColor {
+  background-color: rgba(0,0,0,.1);
+  height: 4px;
+  border: 0;
+}
+
+.hw-ghblock {
+	margin-bottom: 4px;
+}
+
+.tab-pane.active {
+    border: 1px solid #ddd;
+    border-top: none;
+    padding: 10px;
 }

@@ -52,7 +52,7 @@ docker run -dit -p 4433:4433 f5devcentral/f5-hello-world:ws
 ├── secure/
 │   └── Basic Authentication (user:user)
 ├── uri[0-9]*/
-│   └── Alias for DocumentRoot (/var/www/adct/)
+│   └── Alias for DocumentRoot (/var/www/hw/)
 └── ws/
     └── WebSocket Echo
 ```
@@ -65,7 +65,7 @@ for example:
 
 ```shell
 docker run -dit -p 80:8080 -p 443:8443 \
- -v /path/to/your/custom.css:/var/www/adct/css/custom.css \
- -v /path/to/your/custom.js:/var/www/adct/custom.js \
+ -v /path/to/your/custom.css:/var/www/hw/css/custom.css \
+ -v /path/to/your/custom.js:/var/www/hw/custom.js \
  f5devcentral/f5-hello-world
 ```
