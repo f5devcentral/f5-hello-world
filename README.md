@@ -57,15 +57,17 @@ docker run -dit -p 4433:4433 f5devcentral/f5-hello-world:ws
     └── WebSocket Echo
 ```
 
+&nbsp;&nbsp;
+
 ## Customizations
 
 If you would like to add custom CSS or JavaScript you can do so by mounting
-the `css/custom.css` and/or the `custom.js` file(s) into the container instance;
+the `css/custom.css` and/or the `js/custom.js` file(s) into the container instance;
 for example:
 
 ```shell
 docker run -dit -p 80:8080 -p 443:8443 \
  -v /path/to/your/custom.css:/var/www/hw/css/custom.css \
- -v /path/to/your/custom.js:/var/www/hw/custom.js \
+ -v /path/to/your/custom.js:/var/www/hw/js/custom.js \
  f5devcentral/f5-hello-world
 ```
