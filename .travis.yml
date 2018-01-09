@@ -37,7 +37,7 @@ script:
   - docker run -dit -p 4433:4433 $REPO:$WSTAG
   - docker ps -a
   - curl -s http://127.0.0.1/uri$(shuf -i 0-1313 -n 1)/index.php | grep 'hello, world'
-  - curl -sk https://127.0.0.1/uri$(shuf -i 0-1313 -n 1)/secure/index.php -u user:user | grep 'hello, user'
+  - curl -sk https://127.0.0.1/uri$(shuf -i 0-1313 -n 1)/secure/index.php -u user:user | grep '<td>user</td>'
   - echo 'hello, world' | wscat -s echo ws://127.0.0.1:4433 | grep 'hello, world'
 
 after_success:
@@ -51,4 +51,3 @@ after_success:
 notifications:
   slack:
   - secure: "OJcTMFYMRsxe/77lriPflzH9c+1/+og4aRXYt5kJCKpdBaq2kap4WaWWNMMQJn3p2q4scq/brA+HOKYOsIFt7EWFFRWV23QUvxoVYn9jpWDYan50ZhElOguicsG3MXoBWLE+9hqfIhwRkiT1z5BL3fnxrGxMQRzvGQAI9h0eeR3VKypnCgxn5tBYqvYYzEK734dCsCnpabsu8RAu9tE5hAI9dPav1pLG+j8izGgUMph0O4K1r8QQjuhSYSTFXWYr2cpTdqZSOh3zbcXGBasJ1D8JzCCHQ2WikZGv1+KBtJqGXL4cT3scOlRehUFdKqMv/gx/2vCobnSlwdYmTMKMrPX4YYObSftD0qMcuVyDK+rA3BWmiPOfaqoxkLG5NgdzCgxo9v1CXb5HcOcvVIVPZaaOSo6rITPSsbNlndAYlzRDZipEl9rRVfo5UnBHWpdIN+eIsUfJXHaPNus2CvyFz8UVaWe04OrBH9QgR+9H8Id2fET0TX6YLl902ig8F7YHPh7CddTNgrLJYkSpsVcFwusiWNBdwQILZiVshF0wVvPBmrK4KXsK3mgwkB1aOxT/A/4CknIWDZLI5f9zg8ZT422kjvTndwUKCiBau/+BKcXa5HMHTSNFK8DVHvSvqvR9lHs0+5SPT0AaSJmsw67eBddMOZA/dwfl84sJj4ImyL8="
-
