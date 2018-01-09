@@ -15,18 +15,18 @@ RUN apt-get update && \
 	apt-get clean -y && \
 	rm -rf /var/lib/apt/lists/*
 
-# adct
-COPY / /var/www/adct/
+# hello-world
+COPY / /var/www/hw/
 
 # apache2
-RUN cp /var/www/adct/etc/adct*.conf /etc/apache2/sites-available/
-RUN cat /var/www/adct/etc/apache2.conf | tee -a /etc/apache2/apache2.conf
+RUN cp /var/www/hw/etc/hw*.conf /etc/apache2/sites-available/
+RUN cat /var/www/hw/etc/apache2.conf | tee -a /etc/apache2/apache2.conf
 RUN htpasswd -cb /etc/apache2/.htpasswd user user
 RUN a2dissite 000-default.conf
 RUN a2enmod ssl headers
 RUN sed -i 's/Listen 80/Listen 8080/g' /etc/apache2/ports.conf
 RUN sed -i 's/Listen 443/Listen 8443/g' /etc/apache2/ports.conf
-RUN a2ensite adct.conf adct-ssl.conf
+RUN a2ensite hw.conf hw-ssl.conf
 
 # System account
 RUN useradd -r -u 1001 user
