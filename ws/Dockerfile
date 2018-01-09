@@ -10,7 +10,7 @@ LABEL maintainer="Artiom Lichtenstein, Hitesh Patel" version="1.0.6"
 RUN apk add --update --no-cache nodejs && \
 	rm -rf /var/cache/apk/*
 
-# adct:ws
+# hello-world:ws
 COPY / /opt/hw/ws/
 WORKDIR /opt/hw/ws/
 RUN npm install websocket --save
