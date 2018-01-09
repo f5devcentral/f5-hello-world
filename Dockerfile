@@ -17,6 +17,7 @@ RUN apt-get update && \
 
 # hello-world
 COPY / /var/www/hw/
+RUN cp /var/www/hw/index.php /var/www/hw/secure/index.php
 
 # apache2
 RUN cp /var/www/hw/etc/hw*.conf /etc/apache2/sites-available/
