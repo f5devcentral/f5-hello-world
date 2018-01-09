@@ -1,19 +1,18 @@
 # f5-hello-world:ws - Dockerfile
 # https://github.com/f5devcentral/f5-hello-world
-# Artiom Lichtenstein
-# v1.0.5, 22/12/2017
+# Artiom Lichtenstein, Hitesh Patel
 
 FROM alpine
 
-LABEL maintainer="Artiom Lichtenstein" version="1.0.5"
+LABEL maintainer="Artiom Lichtenstein, Hitesh Patel" version="1.0.6"
 
 # Core dependencies
 RUN apk add --update --no-cache nodejs && \
 	rm -rf /var/cache/apk/*
 
-# adct:ws
-COPY / /opt/adct/ws/
-WORKDIR /opt/adct/ws/
+# hello-world:ws
+COPY / /opt/hw/ws/
+WORKDIR /opt/hw/ws/
 RUN npm install websocket --save
 
 # Expose ports
