@@ -1,11 +1,10 @@
 # f5-hello-world - Dockerfile (Heroku)
 # https://github.com/f5devcentral/f5-hello-world
-# Artiom Lichtenstein
-# v1.0.5, 22/12/2017
+# Artiom Lichtenstein, Hitesh Patel
 
 FROM debian:stable-slim
 
-LABEL maintainer="Artiom Lichtenstein" version="1.0.5"
+LABEL maintainer="Artiom Lichtenstein, Hitesh Patel" version="1.0.6"
 
 # Core dependencies
 RUN apt-get update && \
@@ -17,6 +16,7 @@ RUN apt-get update && \
 
 # hello-world
 COPY / /var/www/hw/
+RUN cp /var/www/hw/index.php /var/www/hw/secure/index.php
 
 # apache2
 RUN sed -i 's/8080/${PORT}/' /var/www/hw/etc/hw.conf
