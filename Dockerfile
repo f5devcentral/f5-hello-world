@@ -1,11 +1,10 @@
 # f5-hello-world - Dockerfile
 # https://github.com/f5devcentral/f5-hello-world
-# Artiom Lichtenstein
-# v1.0.5, 22/12/2017
+# Artiom Lichtenstein, Hitesh Patel
 
 FROM debian:stable-slim
 
-LABEL maintainer="Artiom Lichtenstein" version="1.0.5"
+LABEL maintainer="Artiom Lichtenstein, Hitesh Patel" version="1.0.6"
 
 # Core dependencies
 RUN apt-get update && \
@@ -31,7 +30,7 @@ RUN a2ensite hw.conf hw-ssl.conf
 
 # System account
 RUN useradd -r -u 1001 user
-RUN chown -R user: /etc/ssl/private/ /var/log/apache2/ /var/run/apache2/
+RUN chown -RL user: /etc/ssl/private/ /var/log/apache2/ /var/run/apache2/
 
 # Expose ports
 EXPOSE 8080 8443
