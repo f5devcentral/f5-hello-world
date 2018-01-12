@@ -1,4 +1,4 @@
-# <img align="center" src="img/sno.svg" width="70">&nbsp;&nbsp;hello, world
+# <img align="center" src="hw/img/sno.svg" width="70">&nbsp;&nbsp;hello, world
 [![Build Status](https://img.shields.io/travis/f5devcentral/f5-hello-world.svg)](https://travis-ci.org/f5devcentral/f5-hello-world)
 [![Releases](https://img.shields.io/github/release/f5devcentral/f5-hello-world.svg)](https://github.com/f5devcentral/f5-hello-world/releases)
 [![Commits](https://img.shields.io/github/commits-since/f5devcentral/f5-hello-world/v1.0.5.svg?label=commits%20since)](https://github.com/f5devcentral/f5-hello-world/commits/master)
