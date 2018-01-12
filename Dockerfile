@@ -15,18 +15,20 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/*
 
 # hello-world
-COPY / /var/www/hw/
-RUN cp /var/www/hw/index.php /var/www/hw/secure/index.php
+COPY /hw /var/www/hw/
+RUN ln -s /var/www/hw/ /var/www/hw/secure
 
 # apache2
-RUN cp /var/www/hw/etc/hw*.conf /etc/apache2/sites-available/
-RUN cat /var/www/hw/etc/apache2.conf | tee -a /etc/apache2/apache2.conf
+COPY /etc/hw-http*.conf /etc/apache2/sites-available/
+COPY /etc/hw.conf /etc/apache2/
+COPY /etc/apache2.conf /etc/apache2/apache2.conf.append
+RUN cat /etc/apache2/apache2.conf.append | tee -a /etc/apache2/apache2.conf
 RUN htpasswd -cb /etc/apache2/.htpasswd user user
 RUN a2dissite 000-default.conf
 RUN a2enmod ssl headers
 RUN sed -i 's/Listen 80/Listen 8080/g' /etc/apache2/ports.conf
 RUN sed -i 's/Listen 443/Listen 8443/g' /etc/apache2/ports.conf
-RUN a2ensite hw.conf hw-ssl.conf
+RUN a2ensite hw-http.conf hw-https.conf
 
 # System account
 RUN useradd -r -u 1001 user
