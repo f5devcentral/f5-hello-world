@@ -30,13 +30,15 @@ RUN cat /etc/apache2/apache2.conf.append | tee -a /etc/apache2/apache2.conf
 RUN htpasswd -cb /etc/apache2/.htpasswd user user
 RUN a2dissite 000-default.conf
 RUN a2enmod ssl headers
+RUN a2disconf other-vhosts-access-log
 RUN sed -i 's/Listen 80/Listen 8080/g' /etc/apache2/ports.conf
 RUN sed -i 's/Listen 443/Listen 8443/g' /etc/apache2/ports.conf
 RUN a2ensite hw-http.conf hw-https.conf
 
 # System account
-RUN useradd -r -u 1001 user
-RUN chown -RL user: /etc/apache2/ssl /var/log/apache2/ /var/run/apache2/
+#RUN useradd -r -u 1001 user
+RUN chown -RL 1001:0 /etc/apache2/ssl /var/log/apache2/ /var/run/apache2/
+RUN chmod -R g=u /etc/apache2/ssl /var/log/apache2/ /var/run/apache2/
 
 # Expose ports
 EXPOSE 8080 8443
