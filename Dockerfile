@@ -40,5 +40,7 @@ EXPOSE 8080 8443
 # UID to use when running the image and for CMD
 USER 1001
 
+# Environment Variables
+ENV APACHE_HTTPD "exec /usr/sbin/apache2" 
 # Run
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
