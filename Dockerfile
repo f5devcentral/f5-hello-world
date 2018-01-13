@@ -22,6 +22,10 @@ RUN ln -s /var/www/hw/ /var/www/hw/secure
 COPY /etc/hw-http*.conf /etc/apache2/sites-available/
 COPY /etc/hw.conf /etc/apache2/
 COPY /etc/apache2.conf /etc/apache2/apache2.conf.append
+COPY /scripts/httpd-foreground /usr/local/sbin/httpd-foreground
+RUN mkdir -p /etc/apache2/ssl
+COPY /etc/ssl/self.crt /etc/apache2/ssl/self.crt
+COPY /etc/ssl/self.key /etc/apache2/ssl/self.key
 RUN cat /etc/apache2/apache2.conf.append | tee -a /etc/apache2/apache2.conf
 RUN htpasswd -cb /etc/apache2/.htpasswd user user
 RUN a2dissite 000-default.conf
@@ -32,7 +36,7 @@ RUN a2ensite hw-http.conf hw-https.conf
 
 # System account
 RUN useradd -r -u 1001 user
-RUN chown -RL user: /etc/ssl/private/ /var/log/apache2/ /var/run/apache2/
+RUN chown -RL user: /etc/apache2/ssl /var/log/apache2/ /var/run/apache2/
 
 # Expose ports
 EXPOSE 8080 8443
@@ -42,5 +46,6 @@ USER 1001
 
 # Environment Variables
 ENV APACHE_HTTPD "exec /usr/sbin/apache2" 
+ENV STATIC_CERT False
 # Run
-CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+CMD ["/usr/local/sbin/httpd-foreground"]
