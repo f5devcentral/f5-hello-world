@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ $STATIC_CERT == "False" ]
+  then
+  openssl req -new -x509 -days 365 -nodes -out /etc/apache2/ssl/self.crt -keyout /etc/apache2/ssl/self.key -subj "/C=US/ST=Washington/L=Seattle/O=F5 Networks/OU=Super NetOps/CN=$HOSTNAME" &> /dev/null
+fi
+exec /usr/sbin/apachectl -DFOREGROUND
